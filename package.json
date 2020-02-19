@@ -1,0 +1,62 @@
+{
+  "name": "@sutor/fs-tree",
+  "version": "0.0.1",
+  "authors": [
+    "Daniel Couper <danielcouper.sutor@gmail.com>"
+  ],
+  "description": "Convert an array of objects into a persistent or temporary directory structure",
+  "main": "lib/index.js",
+  "keywords": [
+    "fs",
+    "file",
+    "files",
+    "folder",
+    "folders",
+    "tree",
+    "structure",
+    "object",
+    "json",
+    "persistent",
+    "temporary",
+    "directory",
+    "dir"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/Sutor-Design/fs-tree",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Sutor-Design/fs-tree.git"
+  },
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "typecheck": "tsc --noEmit",
+    "coverage": "jest --coverage",
+    "test": "jest",
+    "coveralls": "yarn coverage && cat ./tests/coverage/lcov.info | coveralls"
+  },
+  "devDependencies": {
+    "@types/jest": "^25.1.2",
+    "@types/node": "^13.7.1",
+    "@typescript-eslint/eslint-plugin": "^2.19.2",
+    "@typescript-eslint/parser": "^2.19.2",
+    "coveralls": "^3.0.4",
+    "del": "^5.0.0",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-import-resolver-typescript": "^2.0.0",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-jest": "^23.7.0",
+    "jest": "^25.1.0",
+    "nyc": "^15.0.0",
+    "prettier": "^1.19.1",
+    "ts-jest": "^25.2.0",
+    "typescript": "^3.8.0-beta"
+  },
+  "dependencies": {
+    "is-path-inside": "^3.0.0",
+    "is-plain-obj": "^2.0.0"
+  }
+}
