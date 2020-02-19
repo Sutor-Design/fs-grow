@@ -1,11 +1,12 @@
 {
-  "name": "@sutor/fs-tree",
+  "name": "fs-grow",
   "version": "0.0.1",
   "authors": [
     "Daniel Couper <danielcouper.sutor@gmail.com>"
   ],
-  "description": "Convert an array of objects into a persistent or temporary directory structure",
+  "description": "Grow a directory structure from an array of objects. Testing utility.",
   "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "keywords": [
     "fs",
     "file",
@@ -22,20 +23,29 @@
     "dir"
   ],
   "license": "MIT",
-  "homepage": "https://github.com/Sutor-Design/fs-tree",
+  "homepage": "https://github.com/Sutor-Design/fs-grow#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Sutor-Design/fs-tree.git"
+    "url": "https://github.com/Sutor-Design/fs-grow.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Sutor-Design/fs-grow#issues"
   },
   "files": [
     "lib"
   ],
   "scripts": {
-    "build": "tsc",
-    "typecheck": "tsc --noEmit",
+    "build": "tsc --project tsconfig.build.json",
     "coverage": "jest --coverage",
-    "test": "jest",
-    "coveralls": "yarn coverage && cat ./tests/coverage/lcov.info | coveralls"
+    "format": "prettier --write \"src/**/*.ts\"",
+    "lint": "eslint src/*.ts",
+    "prepublishOnly": "yarn test",
+    "prepare": "yarn build",
+    "preversion": "yarn test",
+    "test": "yarn typecheck && yarn lint && jest",
+    "typecheck": "tsc --noEmit",
+    "version": "yarn format && git add -A src",
+    "postversion": "git push && git push --tags"
   },
   "devDependencies": {
     "@types/jest": "^25.1.2",
@@ -43,19 +53,18 @@
     "@typescript-eslint/eslint-plugin": "^2.19.2",
     "@typescript-eslint/parser": "^2.19.2",
     "coveralls": "^3.0.4",
-    "del": "^5.0.0",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.10.0",
     "eslint-import-resolver-typescript": "^2.0.0",
     "eslint-plugin-import": "^2.20.1",
     "eslint-plugin-jest": "^23.7.0",
     "jest": "^25.1.0",
-    "nyc": "^15.0.0",
     "prettier": "^1.19.1",
     "ts-jest": "^25.2.0",
     "typescript": "^3.8.0-beta"
   },
   "dependencies": {
+    "del": "^5.0.0",
     "is-path-inside": "^3.0.0",
     "is-plain-obj": "^2.0.0"
   }

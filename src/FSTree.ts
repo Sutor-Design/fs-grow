@@ -20,10 +20,7 @@ export default class FSTree {
     this.directory = directory;
   }
 
-  async make(
-    tree: InputEntry[],
-    dryRun = false
-  ): Promise<Array<DirEntry | FileEntry>> {
+  async make(tree: InputEntry[], dryRun = false): Promise<Array<DirEntry | FileEntry>> {
     const parsedInput = parseInputTree(tree, this.directory);
     if (!dryRun) {
       await fs.mkdir(resolve(join(process.cwd(), this.directory)));

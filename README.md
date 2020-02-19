@@ -1,4 +1,4 @@
-# `fs-tree`
+# `fs-grow`
 
 ## Overview
 
@@ -16,13 +16,13 @@ Based on [fsify](https://github.com/electerious/fsify). This originally started 
 ## Installation
 
 ```
-yarn add @sutor/fs-tree
+yarn add fs-grow
 ```
 
 or
 
 ```
-npm install @sutor/fs-tree
+npm install fs-grow
 ```
 
 ## Usage

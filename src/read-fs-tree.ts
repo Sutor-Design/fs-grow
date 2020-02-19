@@ -26,9 +26,7 @@ export function readFSTreeSync(fsRoot: string): Array<DirEntry | FileEntry> {
     } else if (dirent.isFile()) {
       return new FileEntry(dirent.name, fsRoot);
     } else {
-      throw new Error(
-        "Directory entry is neither a file nor a directory, aborting."
-      );
+      throw new Error("Directory entry is neither a file nor a directory, aborting.");
     }
   });
 }
@@ -64,9 +62,7 @@ export function readFSTreeSyncCompact(fsRoot: string): CompactEntry[] {
     } else if (dirent.isFile()) {
       return { name: dirent.name, type: EntryType.FILE };
     } else {
-      throw new Error(
-        "Directory entry is neither a file nor a directory, aborting."
-      );
+      throw new Error("Directory entry is neither a file nor a directory, aborting.");
     }
   });
 }

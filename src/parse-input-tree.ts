@@ -37,9 +37,7 @@ function parseInputEntry(entry: InputEntry, cwd: string): DirEntry | FileEntry {
   }
 
   if (typeof entry.name !== "string") {
-    throw new Error(
-      "Each directory and file must have a valid `name` property."
-    );
+    throw new Error("Each directory and file must have a valid `name` property.");
   }
 
   // NOTE need to manually build the path before doing anything else to allow for
@@ -47,9 +45,7 @@ function parseInputEntry(entry: InputEntry, cwd: string): DirEntry | FileEntry {
   const path = resolve(join(cwd, entry.name));
 
   if (path === cwd) {
-    throw new Error(
-      "Entry name points to the same path as the surrounding structure"
-    );
+    throw new Error("Entry name points to the same path as the surrounding structure");
   }
 
   if (isPathInside(path, cwd) === false) {
@@ -80,7 +76,5 @@ function parseInputEntry(entry: InputEntry, cwd: string): DirEntry | FileEntry {
     }
   }
 
-  throw new Error(
-    `Unknown parsing failure for entry with the name "${entry.name}".`
-  );
+  throw new Error(`Unknown parsing failure for entry with the name "${entry.name}".`);
 }

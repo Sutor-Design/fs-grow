@@ -5,9 +5,7 @@ import { DirEntry, EntryType, FileEntry } from "./Entry";
 
 describe("DirEntry class tests", () => {
   it("creates an instance of the DirEntry class", () => {
-    expect(new DirEntry("foo", join(cwd(), "test"), [])).toBeInstanceOf(
-      DirEntry
-    );
+    expect(new DirEntry("foo", join(cwd(), "test"), [])).toBeInstanceOf(DirEntry);
   });
 
   it("constructs an absolute, resolved `path` property", () => {
@@ -21,23 +19,19 @@ describe("DirEntry class tests", () => {
   });
 
   it("can have the `mode` set in the constructor", () => {
-    expect(
-      new DirEntry("foo", join(cwd(), "test"), [], { mode: 0o444 }).mode
-    ).toBe(0o444);
+    expect(new DirEntry("foo", join(cwd(), "test"), [], { mode: 0o444 }).mode).toBe(
+      0o444
+    );
   });
 });
 
 describe("FileEntry class tests", () => {
   it("creates an instance of the FileEntry class", () => {
-    expect(new FileEntry("foo.txt", join(cwd(), "test"))).toBeInstanceOf(
-      FileEntry
-    );
+    expect(new FileEntry("foo.txt", join(cwd(), "test"))).toBeInstanceOf(FileEntry);
   });
 
   it("has a `type` property of 'FILE'", () => {
-    expect(new FileEntry("foo.txt", join(cwd(), "test")).type).toEqual(
-      EntryType.FILE
-    );
+    expect(new FileEntry("foo.txt", join(cwd(), "test")).type).toEqual(EntryType.FILE);
   });
 
   it("constructs an absolute, resolved `path` property", () => {

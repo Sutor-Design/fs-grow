@@ -2,9 +2,7 @@ import { promises as fs } from "fs";
 
 import { DirEntry, EntryType, FileEntry } from "./Entry";
 
-export async function writeFSTree(
-  tree: (DirEntry | FileEntry)[]
-): Promise<void> {
+export async function writeFSTree(tree: (DirEntry | FileEntry)[]): Promise<void> {
   await Promise.all(tree.map((entry) => writeTreeEntry(entry)));
   return void 0;
 }
