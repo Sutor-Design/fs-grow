@@ -35,7 +35,7 @@
     "lib"
   ],
   "scripts": {
-    "build": "tsc --project tsconfig.build.json",
+    "build": "rm -rf lib && tsc --project tsconfig.build.json",
     "coverage": "jest --coverage",
     "format": "prettier --write \"src/**/*.ts\"",
     "lint": "eslint src/*.ts",
