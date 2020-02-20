@@ -8,10 +8,13 @@ Based on [fsify](https://github.com/electerious/fsify). This originally started 
 
 ## Todo
 
-- [ ] docs are garbage, make them not garbage
+- [ ] docs are garbage, make them not garbage.
+- [ ] rename interface.
+- [ ] better read capability: I can use the `readFSTree` functionality to build up a structure to map & push back into `writeFSTree`.
 - [ ] synchronous/asynchronous versions of all functions.
 - [ ] tests for the `read-fs-tree` module.
-- [ ] only use the EntryType enum internally, input should be a string.
+- [ ] only use the EntryType enum internally, the input should be a string.
+- [ ] allow the parse/write step to accept callbacks, allowing functions to be plugged into the library.
 
 ## Installation
 
@@ -32,7 +35,7 @@ of the `FSTree` class, instantiate it with the root name of the directory that w
 built into:
 
 ```
-import FSTree, { EntryType} from "fs-tree";
+import FSTree, { EntryType} from "@sutor/fs-grow";
 
 const tree = new FSTree("myDirectory");
 ```
