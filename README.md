@@ -16,19 +16,20 @@ Based on [fsify](https://github.com/electerious/fsify). This originally started 
 ## Installation
 
 ```
-yarn add fs-grow
+yarn add @sutor/fs-grow
 ```
 
 or
 
 ```
-npm install fs-grow
+npm install @sutor/fs-grow
 ```
 
 ## Usage
 
-To create an instance of the `FSTree` class, specifying the root name of the directory that
-will be built:
+The library exports a class (`FSTree`) as its default interface. To create an instance
+of the `FSTree` class, instantiate it with the root name of the directory that will be
+built into:
 
 ```
 import FSTree, { EntryType} from "fs-tree";
