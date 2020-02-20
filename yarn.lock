@@ -13,7 +13,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/core@npm:^7.1.0, @babel/core@npm:^7.7.5":
+"@babel/core@npm:^7.1.0, @babel/core@npm:^7.7.5, @babel/core@npm:^7.8.4":
   version: 7.8.4
   resolution: "@babel/core@npm:7.8.4"
   dependencies:
@@ -617,12 +617,16 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@sutor/fs-grow@workspace:."
   dependencies:
+    "@babel/core": ^7.8.4
+    "@babel/types": ^7.8.3
     "@commitlint/cli": ^8.3.5
     "@commitlint/config-conventional": ^8.3.4
+    "@types/babel__core": 7.1.4
     "@types/jest": ^25.1.2
     "@types/node": ^13.7.1
     "@typescript-eslint/eslint-plugin": ^2.19.2
     "@typescript-eslint/parser": ^2.19.2
+    babel-jest: ^25.1.0
     coveralls: ^3.0.4
     del: ^5.0.0
     eslint: ^6.8.0
@@ -634,13 +638,14 @@ __metadata:
     is-path-inside: ^3.0.0
     is-plain-obj: ^2.0.0
     jest: ^25.1.0
+    jest-config: ^25.1.0
     prettier: ^1.19.1
     ts-jest: ^25.2.0
     typescript: ^3.8.0-beta
   languageName: unknown
   linkType: soft
 
-"@types/babel__core@npm:^7.1.0":
+"@types/babel__core@npm:7.1.4, @types/babel__core@npm:^7.1.0":
   version: 7.1.4
   resolution: "@types/babel__core@npm:7.1.4"
   dependencies:

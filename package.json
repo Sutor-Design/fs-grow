@@ -1,6 +1,6 @@
 {
   "name": "@sutor/fs-grow",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "authors": [
     "Daniel Couper <danielcouper.sutor@gmail.com>"
   ],
@@ -39,21 +39,21 @@
     "coverage": "jest --coverage",
     "format": "prettier --write \"src/**/*.ts\"",
     "lint": "eslint src/*.ts",
-    "prepublishOnly": "yarn test",
-    "prepare": "yarn build",
-    "preversion": "yarn test",
     "test": "yarn typecheck && yarn lint && jest",
     "typecheck": "tsc --noEmit",
-    "version": "yarn format && git add -A src",
-    "postversion": "git push && git push --tags"
+    "pre-v1-patch": "yarn test && yarn format && yarn version patch && git add ."
   },
   "devDependencies": {
+    "@babel/core": "^7.8.4",
+    "@babel/types": "^7.8.3",
     "@commitlint/cli": "^8.3.5",
     "@commitlint/config-conventional": "^8.3.4",
+    "@types/babel__core": "7.1.4",
     "@types/jest": "^25.1.2",
     "@types/node": "^13.7.1",
     "@typescript-eslint/eslint-plugin": "^2.19.2",
     "@typescript-eslint/parser": "^2.19.2",
+    "babel-jest": "^25.1.0",
     "coveralls": "^3.0.4",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.10.0",
@@ -62,6 +62,7 @@
     "eslint-plugin-jest": "^23.7.0",
     "husky": "^4.2.3",
     "jest": "^25.1.0",
+    "jest-config": "^25.1.0",
     "prettier": "^1.19.1",
     "ts-jest": "^25.2.0",
     "typescript": "^3.8.0-beta"
