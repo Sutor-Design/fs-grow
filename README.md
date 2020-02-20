@@ -1,5 +1,8 @@
 # `fs-grow`
 
+> **IMPORTANT** this package is _usable_ but extremely raw. While it remains pre v1, I _will_ make drastic changes that
+> _will_ break the API.
+
 ## Overview
 
 Convert an array of objects into a directory structure.
