@@ -1,5 +1,5 @@
 import del from "del";
-import { promises as fs } from "fs";
+import { mkdir } from "fs-extra";
 import { join, resolve } from "path";
 import { cwd } from "process";
 
@@ -23,7 +23,7 @@ export default class FSTree {
   async make(tree: InputEntry[], dryRun = false): Promise<Array<DirEntry | FileEntry>> {
     const parsedInput = parseInputTree(tree, this.directory);
     if (!dryRun) {
-      await fs.mkdir(resolve(join(process.cwd(), this.directory)));
+      await mkdir(resolve(join(process.cwd(), this.directory)));
       await writeFSTree(parsedInput);
     }
     return parsedInput;

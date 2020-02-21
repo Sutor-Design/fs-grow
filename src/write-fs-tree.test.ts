@@ -1,19 +1,23 @@
-import { promises as fs } from "fs";
+import { emptyDir, mkdirp, remove } from "fs-extra";
 import { join, resolve } from "path";
 
 import { EntryType } from "./Entry";
-import { readFSTreeSyncCompact } from "./read-fs-tree";
+import { readFSTreeCompact } from "./read-fs-tree";
 import { writeFSTree } from "./write-fs-tree";
 
 describe("creating filesystem structures", () => {
   const testFolderPath = resolve(join(process.cwd(), "test"));
 
-  beforeEach(async () => {
-    await fs.mkdir(testFolderPath);
+  beforeAll(async () => {
+    await mkdirp(testFolderPath);
   });
 
   afterEach(async () => {
-    await fs.rmdir(testFolderPath, { recursive: true });
+    await emptyDir(testFolderPath);
+  });
+
+  afterAll(async () => {
+    await remove(testFolderPath);
   });
 
   test("structure with content", async () => {
@@ -47,8 +51,9 @@ describe("creating filesystem structures", () => {
     ];
 
     await writeFSTree(input);
+    const outputStructure = await readFSTreeCompact(testFolderPath);
 
-    expect(readFSTreeSyncCompact(testFolderPath)).toEqual([
+    expect(outputStructure).toEqual([
       {
         name: "dirname",
         type: EntryType.DIRECTORY,
@@ -96,8 +101,9 @@ describe("creating filesystem structures", () => {
     ];
 
     await writeFSTree(input);
+    const outputStructure = await readFSTreeCompact(testFolderPath);
 
-    expect(readFSTreeSyncCompact(testFolderPath)).toEqual([
+    expect(outputStructure).toEqual([
       {
         type: EntryType.DIRECTORY,
         name: "dirname",
@@ -131,8 +137,9 @@ describe("creating filesystem structures", () => {
     ];
 
     await writeFSTree(input);
+    const outputStructure = await readFSTreeCompact(testFolderPath);
 
-    expect(readFSTreeSyncCompact(testFolderPath)).toEqual([
+    expect(outputStructure).toEqual([
       {
         name: "filename",
         type: EntryType.FILE,

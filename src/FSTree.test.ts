@@ -1,10 +1,10 @@
-import { existsSync, promises as fs } from "fs";
+import { pathExists, remove } from "fs-extra";
 import { join, resolve } from "path";
 import { cwd } from "process";
 
 import { EntryType } from "./Entry";
 import FSTree from "./FSTree";
-import { readFSTreeSyncCompact } from "./read-fs-tree";
+import { readFSTreeCompact } from "./read-fs-tree";
 
 describe("e2e testing of interface", () => {
   it("creates an instance of the FSTree class", () => {
@@ -66,9 +66,11 @@ describe("e2e testing of interface", () => {
     const dirs = await instance.make(input);
 
     expect(dirs).toEqual(output);
-    expect(readFSTreeSyncCompact("test")).toEqual(input);
 
-    await fs.rmdir(resolve(join(process.cwd(), "test")), { recursive: true });
+    const outputStructure = await readFSTreeCompact("test");
+    expect(outputStructure).toEqual(input);
+
+    await remove(resolve(join(process.cwd(), "test")));
   });
 
   it("executing the `make` method with the `dryRun` flag just returns a visual representation of the expected directory structure", async () => {
@@ -120,9 +122,10 @@ describe("e2e testing of interface", () => {
     ];
 
     const dirs = await instance.make(input, true);
-
     expect(dirs).toEqual(output);
-    expect(existsSync(resolve(join(cwd(), "test")))).toBe(false);
+
+    const dirExists = await pathExists(resolve(join(cwd(), "test")));
+    expect(dirExists).toBe(false);
   });
 
   it("destroys the the directory created using `make` when `clean` is executed", async () => {
@@ -145,10 +148,13 @@ describe("e2e testing of interface", () => {
     ];
 
     await instance.make(input);
-    expect(readFSTreeSyncCompact("test")).toEqual(input);
+    const outputStructure = await readFSTreeCompact("test");
+    expect(outputStructure).toEqual(input);
 
     await instance.clean();
-    expect(existsSync(resolve(join(cwd(), "test")))).toBe(false);
+
+    const dirExists = await pathExists(resolve(join(cwd(), "test")));
+    expect(dirExists).toBe(false);
   });
 
   it("returns an array of the dirs/files to delete when `clean` is executed with the `dryRun` flag set to true", async () => {
@@ -171,7 +177,8 @@ describe("e2e testing of interface", () => {
     ];
 
     await instance.make(input);
-    expect(readFSTreeSyncCompact("test")).toEqual(input);
+    const outputStructure = await readFSTreeCompact("test");
+    expect(outputStructure).toEqual(input);
 
     expect(await instance.clean(true)).toEqual([resolve(join(cwd(), "test"))]);
 

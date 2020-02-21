@@ -13,9 +13,8 @@ Based on [fsify](https://github.com/electerious/fsify). This originally started 
 
 - [ ] docs are garbage, make them not garbage.
 - [ ] rename interface.
-- [ ] better read capability: I can use the `readFSTree` functionality to build up a structure to map & push back into `writeFSTree`.
-- [ ] synchronous/asynchronous versions of all functions.
-- [ ] tests for the `read-fs-tree` module.
+- [ ] synchronous versions write/read.
+- [ ] more tests for the `read-fs-tree` module.
 - [ ] only use the EntryType enum internally, the input should be a string.
 - [ ] allow the parse/write step to accept callbacks, allowing functions to be plugged into the library.
 
@@ -33,9 +32,9 @@ npm install @sutor/fs-grow
 
 ## Usage
 
-The library exports a class (`FSTree`) as its default interface. To create an instance
-of the `FSTree` class, instantiate it with the root name of the directory that will be
-built into:
+The library exports a class as its default interface. To create an instance
+of the [`FSTree`] class, instantiate it with the root name of the directory that will be
+built into. This directory will be created inside the current working directory.
 
 ```
 import FSTree, { EntryType} from "@sutor/fs-grow";

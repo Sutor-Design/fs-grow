@@ -4,3 +4,7 @@ lib/
 # Yarn-generated (Zero-install config) files
 .yarn/unplugged
 .yarn/build-state.yml
+
+# In case the repo is downloaded and `npm install` is ran,
+# ensure the node_modules folder it creates doesn't get committed
+node_modules/
